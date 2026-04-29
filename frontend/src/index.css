@@ -1,0 +1,286 @@
+/* index.css — Styles for the Wumpus Logic Agent UI */
+
+/* -------------------------------------------------- Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* -------------------------------------------------- App Shell */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.app-header {
+  text-align: center;
+  padding: 24px 0 12px;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+.app-footer {
+  text-align: center;
+  color: #475569;
+  font-size: 0.8rem;
+  padding: 24px 0 8px;
+}
+
+/* -------------------------------------------------- Controls */
+.controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 14px 20px;
+  margin: 16px 0;
+}
+
+.control-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.control-input {
+  width: 56px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 7px;
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, opacity 0.15s;
+}
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary    { background: #3b82f6; color: #fff; }
+.btn-primary:hover:not(:disabled) { background: #2563eb; }
+
+.btn-secondary  { background: #475569; color: #fff; }
+.btn-secondary:hover:not(:disabled) { background: #334155; }
+
+.btn-autoplay   { background: #16a34a; color: #fff; }
+.btn-autoplay:hover:not(:disabled) { background: #15803d; }
+
+.btn-stop       { background: #dc2626; color: #fff; }
+.btn-stop:hover:not(:disabled) { background: #b91c1c; }
+
+.btn-reveal-on  { background: #d97706; color: #fff; }
+.btn-reveal-off { background: #334155; color: #e2e8f0; }
+
+/* -------------------------------------------------- Error / Welcome */
+.error-banner {
+  background: #7f1d1d;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  color: #fecaca;
+  font-size: 0.9rem;
+}
+
+.welcome-box {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+  line-height: 2;
+}
+
+/* -------------------------------------------------- Game Layout */
+.game-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.game-left  { flex: 1 1 400px; }
+.game-right { flex: 0 0 340px; }
+
+/* -------------------------------------------------- Grid */
+.grid-wrapper { padding: 8px 0; }
+
+.grid-container {
+  display: grid;
+  gap: 3px;
+}
+
+/* Base cell */
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  position: relative;
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.cell-icon  { font-size: 1.4rem; line-height: 1; }
+.cell-coord { font-size: 0.58rem; color: rgba(255,255,255,0.4); position: absolute; bottom: 3px; }
+
+/* Cell colors */
+.cell-agent      { background: #1d4ed8; border-color: #60a5fa; }
+.cell-visited    { background: #15803d; border-color: #4ade80; }
+.cell-safe-known { background: #166534; border-color: #86efac; }
+.cell-unknown    { background: #1e293b; border-color: #334155; }
+.cell-pit, .cell-wumpus { background: #7f1d1d; border-color: #ef4444; }
+.cell-start      { border-color: #fbbf24 !important; }
+
+/* -------------------------------------------------- Grid Legend */
+.grid-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.legend-item { display: flex; align-items: center; gap: 5px; }
+
+.legend-dot {
+  width: 12px; height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.dot-agent     { background: #1d4ed8; border: 1px solid #60a5fa; }
+.dot-visited   { background: #15803d; border: 1px solid #4ade80; }
+.dot-safe-known{ background: #166534; border: 1px solid #86efac; }
+.dot-unknown   { background: #1e293b; border: 1px solid #334155; }
+.dot-hazard    { background: #7f1d1d; border: 1px solid #ef4444; }
+
+/* -------------------------------------------------- Metrics Panel */
+.metrics-panel {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.metrics-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 14px;
+}
+
+.metrics-divider {
+  height: 1px;
+  background: #334155;
+  margin: 12px 0;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.88rem;
+  gap: 8px;
+}
+
+.metric-label {
+  color: #94a3b8;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.metric-value {
+  color: #e2e8f0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.metric-message {
+  background: #0f172a;
+  border-left: 3px solid #3b82f6;
+  padding: 10px 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.83rem;
+  color: #cbd5e1;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  min-height: 44px;
+}
+
+/* Percepts */
+.percept-list { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.percept-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.percept-active   { background: #15803d; color: #bbf7d0; }
+.percept-inactive { background: #1e293b; color: #475569; border: 1px solid #334155; }
+
+/* Status banners */
+.status-banner {
+  padding: 10px 14px;
+  border-radius: 7px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.banner-won  { background: #14532d; color: #86efac; border: 1px solid #16a34a; }
+.banner-dead { background: #7f1d1d; color: #fca5a5; border: 1px solid #dc2626; }
+
+/* Explanation box */
+.metrics-explanation {
+  margin-top: 14px;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  padding: 12px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* Utility */
+.text-green  { color: #4ade80; }
+.text-orange { color: #fb923c; }
