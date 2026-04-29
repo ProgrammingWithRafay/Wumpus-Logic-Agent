@@ -3,7 +3,7 @@
 
 import { GameState } from "../types";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 /**
  * Initialize a new game with a given grid size.
