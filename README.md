@@ -3,6 +3,7 @@
 A web-based Wumpus World agent that navigates an unknown grid using propositional logic
 and resolution refutation. The agent never guesses — it only moves when it can logically
 prove a cell is safe.
+It is live on Vercel right now. You can check it here:https://wumpus-logic-agent-nu.vercel.app/
 
 ---
 
